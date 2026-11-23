@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amalfi &amp; The Emerald Coast — Discover the Beauty of the World</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Cormorant Garamond (Editorial Display) + Inter (Clean UI/Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            coast: {
+              50: '#f2f9f7',
+              100: '#dff0eb',
+              200: '#c0e1d8',
+              300: '#93cabe',
+              400: '#60ad9e',
+              500: '#3f9182',
+              600: '#2e7468',
+              700: '#275e55',
+              800: '#224c46',
+              900: '#1f403b',
+              950: '#0d2421',
+            },
+            sand: {
+              50: '#fcfaf7',
+              100: '#f7f3ed',
+              200: '#ede5d8',
+              300: '#dfd2be',
+              400: '#cdb89d',
+              500: '#b99d7c',
+            },
+            terracotta: {
+              500: '#c86446',
+              600: '#b05135',
+              700: '#8f3f28',
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 35px -10px rgba(13, 36, 33, 0.08)',
+            card: '0 18px 40px -15px rgba(13, 36, 33, 0.12)',
+            elevated: '0 25px 60px -15px rgba(13, 36, 33, 0.22)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Custom subtle animations and modal transitions */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes kenBurnsSlow {
+      0% {
+        transform: scale(1) translate3d(0, 0, 0);
+      }
+      50% {
+        transform: scale(1.06) translate3d(-1%, -1%, 0);
+      }
+      100% {
+        transform: scale(1) translate3d(0, 0, 0);
+      }
+    }
+
+    .animate-fade-up {
+      animation: fadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .animate-ken-burns {
+      animation: kenBurnsSlow 24s ease-in-out infinite;
+    }
+
+    /* Scroll reveal utility */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Custom scrollbar for smooth aesthetic */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f7f3ed;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c0e1d8;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #60ad9e;
+    }
+  </style>
+</head>
+
+<body class="bg-sand-50 text-coast-950 font-sans antialiased selection:bg-coast-200 selection:text-coast-950 overflow-x-hidden">
+
+  <!-- ==================== 1. STICKY NAVIGATION & HERO SECTION ==================== -->
+  <header id="top" class="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between overflow-hidden">
+    <!-- Background Photo with Ken Burns Motion & Rich Gradient Overlay -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img
+        src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=2000&q=85"
+        alt="Sun-drenched cliffside coastal town and turquoise waters along Amalfi and the Emerald Coast"
+        onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/1f403b/f7f3ed?text=Amalfi+%26+The+Emerald+Coast';"
+        class="w-full h-full object-cover object-center animate-ken-burns"
+      />
+      <!-- Multi-stop vignette for strong contrast and atmospheric depth -->
+      <div class="absolute inset-0 bg-gradient-to-b from-coast-950/70 via-coast-950/45 to-coast-950/85"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-coast-950/65 via-transparent to-transparent"></div>
+    </div>
+
+    <!-- Sticky Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 inset-x-0 z-40 transition-all duration-300 bg-coast-950/40 backdrop-blur-md border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+          <!-- Brand Logo -->
+          <a href="#top" class="flex items-center gap-2.5 group focus:outline-none">
+            <span class="w-9 h-9 rounded-full bg-coast-500/25 border border-coast-300/40 flex items-center justify-center text-coast-200 group-hover:bg-coast-500 group-hover:text-white transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 17c2.5 0 4.5-2 7-2s4.5 2 7 2 4-1.5 4-1.5M3 21c2.5 0 4.5-2 7-2s4.5 2 7 2 4-1.5 4-1.5M12 3l3 7-3 2-3-2 3-7z" />
+              </svg>
+            </span>
+            <div class="leading-tight">
+              <span class="block font-serif text-lg sm:text-xl font-semibold tracking-wide text-white">Amalfi &amp; Emerald</span>
+              <span class="block text-[10px] uppercase tracking-[0.22em] text-coast-200/80">Coastal Sanctuary</span>
+            </div>
+          </a>
+
+          <!-- Desktop Links -->
+          <div class="hidden lg:flex items-center gap-7 text-sm font-medium text-sand-100/90">
+            <a href="#about" class="hover:text-coast-200 transition-colors py-2">About</a>
+            <a href="#places" class="hover:text-coast-200 transition-colors py-2">Places</a>
+            <a href="#packages" class="hover:text-coast-200 transition-colors py-2">Packages</a>
+            <a href="#activities" class="hover:text-coast-200 transition-colors py-2">Activities</a>
+            <a href="#gallery" class="hover:text-coast-200 transition-colors py-2">Gallery</a>
+            <a href="#booking" class="px-4 py-2 rounded-full bg-terracotta-500 hover:bg-terracotta-600 text-white font-semibold shadow-sm transition-all">
+              Book Trip
+            </a>
+          </div>
+
+          <!-- Mobile Hamburger Button -->
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            class="lg:hidden p-2.5 rounded-xl text-white hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-coast-300"
+          >
+            <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Drawer Menu -->
+      <div id="mobile-menu" class="hidden lg:hidden bg-coast-950/95 backdrop-blur-lg border-b border-white/10">
+        <div class="px-4 pt-3 pb-6 space-y-1.5 text-base font-medium text-sand-100">
+          <a href="#about" class="mobile-nav-link block px-4 py-3 rounded-xl hover:bg-white/10 transition-colors">About the Destination</a>
+          <a href="#places" class="mobile-nav-link block px-4 py-3 rounded-xl hover:bg-white/10 transition-colors">Popular Places</a>
+          <a href="#packages" class="mobile-nav-link block px-4 py-3 rounded-xl hover:bg-white/10 transition-colors">Travel Packages</a>
+          <a href="#activities" class="mobile-nav-link block px-4 py-3 rounded-xl hover:bg-white/10 transition-colors">Activities &amp; Experiences</a>
+          <a href="#gallery" class="mobile-nav-link block px-4 py-3 rounded-xl hover:bg-white/10 transition-colors">Photo Gallery</a>
+          <div class="pt-2">
+            <a href="#booking" class="mobile-nav-link block w-full text-center px-5 py-3.5 rounded-xl bg-terracotta-500 hover:bg-terracotta-600 text-white font-semibold shadow transition-colors">
+              Book Your Trip
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Centerpiece Content -->
+    <div class="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 pb-16 sm:pb-24 my-auto">
+      <div class="max-w-3xl animate-fade-up">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-coast-100 text-xs sm:text-sm font-medium tracking-wide mb-6">
+          <span class="w-2 h-2 rounded-full bg-coast-300 animate-pulse"></span>
+          Mediterranean Cliffs &bull; Emerald Coves &bull; Alpine Trails
+        </div>
+
+        <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-semibold text-white leading-[1.06] tracking-tight drop-shadow-sm">
+          Discover the Beauty of the World
+        </h1>
+
+        <p class="mt-5 sm:mt-6 text-base sm:text-lg lg:text-xl text-sand-100/90 leading-relaxed max-w-2xl font-light">
+          Journey along sun-kissed limestone cliffs, secret emerald grottos, terraced lemon groves, and timeless coastal villages where dramatic mountain peaks meet crystal-clear seas.
+        </p>
+
+        <!-- Primary CTA Buttons -->
+        <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+          <a
+            href="#places"
+            class="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full bg-coast-500 hover:bg-coast-400 text-white font-semibold text-sm sm:text-base shadow-elevated transition-all duration-200 hover:-translate-y-0.5"
+          >
+            <span>Explore Now</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+
+          <a
+            href="#booking"
+            class="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full bg-white/12 hover:bg-white/20 backdrop-blur-md border border-white/35 text-white font-semibold text-sm sm:text-base transition-all duration-200 hover:-translate-y-0.5"
+          >
+            <span>Book Your Trip</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Hero Quick Stats Strip -->
+    <div class="relative z-10 border-t border-white/15 bg-coast-950/55 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 text-white">
+          <div class="flex items-center gap-3">
+            <span class="text-coast-300 font-serif text-2xl sm:text-3xl font-semibold">300+</span>
+            <span class="text-xs sm:text-sm text-sand-100/80 leading-snug">Sunny days &amp;<br/>mild coastal breeze</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-coast-300 font-serif text-2xl sm:text-3xl font-semibold">48 km</span>
+            <span class="text-xs sm:text-sm text-sand-100/80 leading-snug">Dramatic shoreline &amp;<br/>emerald coves</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-coast-300 font-serif text-2xl sm:text-3xl font-semibold">12th C.</span>
+            <span class="text-xs sm:text-sm text-sand-100/80 leading-snug">Maritime heritage &amp;<br/>cliffside villas</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-coast-300 font-serif text-2xl sm:text-3xl font-semibold">4.9 ★</span>
+            <span class="text-xs sm:text-sm text-sand-100/80 leading-snug">Curated experiences<br/>by local guides</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== 2. ABOUT THE DESTINATION ==================== -->
+    <section id="about" class="py-20 sm:py-28 bg-sand-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          <!-- Left Curated Photography Collage -->
+          <div class="lg:col-span-6 reveal">
+            <div class="relative">
+              <div class="rounded-3xl overflow-hidden shadow-card aspect-[4/3]">
+                <img
+                  src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1400&q=80"
+                  alt="Historic pastel coastal houses overlooking turquoise waters"
+                  onerror="this.onerror=null;this.src='https://placehold.co/900x675/2e7468/ffffff?text=Coastal+Heritage';"
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+
+              <!-- Secondary Overlapping Photo Card -->
+              <div class="mt-4 sm:mt-0 sm:absolute sm:-bottom-7 sm:-right-6 w-full sm:w-64 rounded-2xl overflow-hidden shadow-elevated border-4 border-sand-50 bg-white">
+                <img
+                  src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80"
+                  alt="Crystal clear emerald waves and sandy shoreline"
+                  onerror="this.onerror=null;this.src='https://placehold.co/500x340/3f9182/ffffff?text=Emerald+Waters';"
+                  class="w-full h-36 object-cover"
+                />
+                <div class="p-3.5">
+                  <p class="text-xs font-semibold uppercase tracking-wider text-coast-700">Mediterranean Microclimate</p>
+                  <p class="text-xs text-coast-950/75 mt-0.5">Avg. 22°C–28°C from May to October with refreshing sea breezes.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Editorial Storytelling -->
+          <div class="lg:col-span-6 reveal">
+            <span class="inline-block text-xs font-semibold uppercase tracking-[0.22em] text-terracotta-600 mb-3">
+              About the Destination
+            </span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-semibold text-coast-950 leading-tight">
+              Where Ancient Maritime Soul Meets Emerald Waters
+            </h2>
+            <p class="mt-5 text-base text-coast-950/80 leading-relaxed">
+              Nestled between rugged limestone peaks and shimmering sea coves, <strong>Amalfi &amp; The Emerald Coast</strong> is a destination celebrated for its sensory richness. Centuries-old seafaring traditions, fragrant citrus terraces, sunlit piazzas, and dramatic coastal trails blend seamlessly into an unhurried Mediterranean rhythm.
+            </p>
+            <p class="mt-4 text-base text-coast-950/80 leading-relaxed">
+              Whether you wander cobblestone alleys lined with hand-painted ceramics, sail beneath towering sea cliffs, or dine on line-caught seafood beside harbor lanterns, every moment feels deeply authentic and restorative.
+            </p>
+
+            <!-- Four Pillar Highlights (Culture, History, Climate, Attractions) -->
+            <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-4 rounded-2xl bg-white border border-sand-200 shadow-soft">
+                <div class="w-9 h-9 rounded-xl bg-coast-100 text-coast-700 flex items-center justify-center mb-2.5">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+                <h3 class="font-semibold text-coast-950 text-sm">Rich History &amp; Heritage</h3>
+                <p class="text-xs text-coast-950/70 mt-1 leading-relaxed">Medieval maritime republics, terraced stone walls, and hillside chapels overlooking the sea.</p>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white border border-sand-200 shadow-soft">
+                <div class="w-9 h-9 rounded-xl bg-coast-100 text-coast-700 flex items-center justify-center mb-2.5">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </div>
+                <h3 class="font-semibold text-coast-950 text-sm">Warm Coastal Culture</h3>
+                <p class="text-xs text-coast-950/70 mt-1 leading-relaxed">Artisanal pottery workshops, evening passeggiata strolls, and welcoming family-run trattorias.</p>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white border border-sand-200 shadow-soft">
+                <div class="w-9 h-9 rounded-xl bg-coast-100 text-coast-700 flex items-center justify-center mb-2.5">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                </div>
+                <h3 class="font-semibold text-coast-950 text-sm">Balanced Year-Round Climate</h3>
+                <p class="text-xs text-coast-950/70 mt-1 leading-relaxed">Crisp spring blossoms, golden summers, and mild autumns ideal for hiking and swimming.</p>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white border border-sand-200 shadow-soft">
+                <div class="w-9 h-9 rounded-xl bg-coast-100 text-coast-700 flex items-center justify-center mb-2.5">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <h3 class="font-semibold text-coast-950 text-sm">Iconic Landmarks &amp; Coves</h3>
+                <p class="text-xs text-coast-950/70 mt-1 leading-relaxed">From cliffside botanical gardens and sea caves to panoramic ridge trails above the surf.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. POPULAR PLACES TO VISIT ==================== -->
+    <section id="places" class="py-20 sm:py-28 bg-sand-100/80 border-y border-sand-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
+          <div>
+            <span class="inline-block text-xs font-semibold uppercase tracking-[0.22em] text-coast-700 mb-2">
+              Popular Places to Visit
+            </span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-semibold text-coast-950">
+              Signature Coastal Landmarks
+            </h2>
+          </div>
+          <p class="text-sm sm:text-base text-coast-950/75 max-w-md">
+            Handpicked towns, natural coves, and clifftop sanctuaries that define the character of the coast.
+          </p>
+        </div>
+
+        <!-- Places Grid (Populated cleanly & interactively) -->
+        <div id="places-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+          <!-- Cards rendered via JS for clean modal data binding -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. TRAVEL PACKAGES ==================== -->
+    <section id="packages" class="py-20 sm:py-28 bg-sand-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+          <span class="inline-block text-xs font-semibold uppercase tracking-[0.22em] text-terracotta-600 mb-2">
+            Curated Travel Packages
+          </span>
+          <h2 class="font-serif text-3xl sm:text-5xl font-semibold text-coast-950">
+            Tailored Journeys for Every Traveler
+          </h2>
+          <p class="mt-3 text-sm sm:text-base text-coast-950/75">
+            Thoughtfully paced itineraries combining boutique stays, private transfers, and memorable local experiences.
+          </p>
+        </div>
+
+        <!-- 4 Distinct Packages Grid -->
+        <div id="packages-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-7">
+          <!-- Package cards rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. ACTIVITIES AND EXPERIENCES ==================== -->
+    <section id="activities" class="py-20 sm:py-28 bg-coast-950 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14 reveal">
+          <div>
+            <span class="inline-block text-xs font-semibold uppercase tracking-[0.22em] text-coast-300 mb-2">
+              Activities &amp; Experiences
+            </span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-semibold text-white">
+              Adventure From Ridge to Reef
+            </h2>
+          </div>
+          <p class="text-sm sm:text-base text-sand-100/75 max-w-lg">
+            Whether you seek invigorating mountain ascents, tranquil sunset boating, or starlit coastal camping, explore six signature ways to experience the region.
+          </p>
+        </div>
+
+        <!-- 6 Activities Grid -->
+        <div id="activities-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+          <!-- Activity cards rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. PHOTO GALLERY ==================== -->
+    <section id="gallery" class="py-20 sm:py-28 bg-sand-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 reveal">
+          <div>
+            <span class="inline-block text-xs font-semibold uppercase tracking-[0.22em] text-coast-700 mb-2">
+              Visual Journal
+            </span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-semibold text-coast-950">
+              Moments Across the Coast
+            </h2>
+          </div>
+
+          <!-- Category Filter Pills -->
+          <div id="gallery-filters" class="flex flex-wrap gap-2" role="tablist" aria-label="Filter photo gallery by category">
+            <!-- Filter buttons rendered via JS -->
+          </div>
+        </div>
+
+        <!-- Responsive Photo Grid -->
+        <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          <!-- Gallery items rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 7. INTERACTIVE BOOKING SECTION ==================== -->
+    <section id="booking" class="py-20 sm:py-28 bg-gradient-to-b from-sand-100 to-coast-100/60 border-t border-sand-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          <!-- Left Info & Concierge Highlights -->
+          <div class="lg:col-span-5 reveal">
+            <span class="inline-block text-xs font-semibold uppercase tracking-[0.22em] text-terracotta-600 mb-2">
+              Reserve Your Escape
+            </span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-semibold text-coast-950 leading-tight">
+              Plan Your Journey With Us
+            </h2>
+            <p class="mt-4 text-sm sm:text-base text-coast-950/80 leading-relaxed">
+              Share your travel dates, preferred destination or package, and group size. Our coastal travel specialists will craft a personalized reservation itinerary and confirm availability promptly.
+            </p>
+
+            <div class="mt-8 space-y-4">
+              <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/90 border border-sand-200 shadow-soft">
+                <div class="w-10 h-10 rounded-xl bg-coast-100 text-coast-700 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-sm text-coast-950">Flexible Date Adjustments</h3>
+                  <p class="text-xs text-coast-950/70 mt-0.5">Complimentary rescheduling up to 14 days before departure on all curated packages.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/90 border border-sand-200 shadow-soft">
+                <div class="w-10 h-10 rounded-xl bg-coast-100 text-coast-700 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-sm text-coast-950">Local Certified Guides</h3>
+                  <p class="text-xs text-coast-950/70 mt-0.5">Experienced coastal skippers, mountain trail leaders, and culinary hosts.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/90 border border-sand-200 shadow-soft">
+                <div class="w-10 h-10 rounded-xl bg-coast-100 text-coast-700 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-sm text-coast-950">24/7 Concierge Desk</h3>
+                  <p class="text-xs text-coast-950/70 mt-0.5">Direct assistance at +39 089 555 0194 or concierge@amalfiemerald.example</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Booking Form Card -->
+          <div class="lg:col-span-7 reveal">
+            <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-card border border-sand-200">
+              <!-- Confirmation Summary View (Hidden until valid submission) -->
+              <div id="booking-confirmation" class="hidden py-6 text-center">
+                <div class="w-14 h-14 rounded-full bg-coast-100 text-coast-700 flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span class="text-xs font-semibold uppercase tracking-widest text-coast-600">Booking Request Received</span>
+                <h3 class="font-serif text-3xl font-semibold text-coast-950 mt-1">Grazie! Your Trip Inquiry Is Confirmed</h3>
+                <p class="text-sm text-coast-950/75 mt-2 max-w-md mx-auto">
+                  We have prepared your preliminary trip summary below and sent a copy to your email address.
+                </p>
+
+                <div id="confirmation-details" class="mt-6 text-left bg-sand-50 rounded-2xl p-5 border border-sand-200 space-y-2.5 text-sm">
+                  <!-- Populated dynamically -->
+                </div>
+
+                <button
+                  id="book-another-btn"
+                  type="button"
+                  class="mt-7 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-coast-700 hover:bg-coast-800 text-white font-semibold text-sm transition-colors"
+                >
+                  Book Another Trip
+                </button>
+              </div>
+
+              <!-- Interactive Booking Form -->
+              <form id="booking-form" novalidate class="space-y-5">
+                <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-sand-200">
+                  <h3 class="font-serif text-2xl sm:text-3xl font-semibold text-coast-950">Travel Booking Form</h3>
+                  <span id="selected-package-badge" class="hidden text-xs font-medium px-3 py-1 rounded-full bg-terracotta-500/10 text-terracotta-700 border border-terracotta-500/20"></span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <!-- Full Name -->
+                  <div>
+                    <label for="full-name" class="block text-xs font-semibold uppercase tracking-wider text-coast-950 mb-1.5">
+                      Full Name <span class="text-terracotta-600">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="full-name"
+                      name="fullName"
+                      placeholder="Elena Rostova"
+                      class="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-coast-950 placeholder:text-coast-950/40 focus:outline-none focus:bg-white focus:border-coast-600 focus:ring-2 focus:ring-coast-500/20 transition-all"
+                    />
+                    <p id="error-full-name" class="hidden text-xs text-terracotta-700 mt-1"></p>
+                  </div>
+
+                  <!-- Email Address -->
+                  <div>
+                    <label for="email-address" class="block text-xs font-semibold uppercase tracking-wider text-coast-950 mb-1.5">
+                      Email Address <span class="text-terracotta-600">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="email-address"
+                      name="email"
+                      placeholder="elena@example.com"
+                      class="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-coast-950 placeholder:text-coast-950/40 focus:outline-none focus:bg-white focus:border-coast-600 focus:ring-2 focus:ring-coast-500/20 transition-all"
+                    />
+                    <p id="error-email-address" class="hidden text-xs text-terracotta-700 mt-1"></p>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <!-- Phone Number -->
+                  <div>
+                    <label for="phone-number" class="block text-xs font-semibold uppercase tracking-wider text-coast-950 mb-1.5">
+                      Phone Number <span class="text-terracotta-600">*</span>
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone-number"
+                      name="phone"
+                      placeholder="+39 333 555 0148"
+                      class="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-coast-950 placeholder:text-coast-950/40 focus:outline-none focus:bg-white focus:border-coast-600 focus:ring-2 focus:ring-coast-500/20 transition-all"
+                    />
+                    <p id="error-phone-number" class="hidden text-xs text-terracotta-700 mt-1"></p>
+                  </div>
+
+                  <!-- Destination -->
+                  <div>
+                    <label for="destination-select" class="block text-xs font-semibold uppercase tracking-wider text-coast-950 mb-1.5">
+                      Destination / Experience <span class="text-terracotta-600">*</span>
+                    </label>
+                    <select
+                      id="destination-select"
+                      name="destination"
+                      class="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-coast-950 focus:outline-none focus:bg-white focus:border-coast-600 focus:ring-2 focus:ring-coast-500/20 transition-all"
+                    >
+                      <option value="">Select a destination...</option>
+                      <optgroup label="Popular Places">
+                        <option value="Positano Cliffside Sanctuary">Positano Cliffside Sanctuary</option>
+                        <option value="Emerald Grotto &amp; Cala Verde">Emerald Grotto &amp; Cala Verde</option>
+                        <option value="Ravello Terrace Gardens">Ravello Terrace Gardens</option>
+                        <option value="Path of the Gods Ridge">Path of the Gods Ridge</option>
+                        <option value="Atrani Harbor &amp; Lemon Groves">Atrani Harbor &amp; Lemon Groves</option>
+                        <option value="Li Galli Marine Reserve">Li Galli Marine Reserve</option>
+                      </optgroup>
+                      <optgroup label="Travel Packages">
+                        <option value="Weekend Getaway (3 Days)">Weekend Getaway (3 Days)</option>
+                        <option value="Adventure Package (5 Days)">Adventure Package (5 Days)</option>
+                        <option value="Family Vacation (6 Days)">Family Vacation (6 Days)</option>
+                        <option value="Luxury Tour (7 Days)">Luxury Tour (7 Days)</option>
+                      </optgroup>
+                    </select>
+                    <p id="error-destination-select" class="hidden text-xs text-terracotta-700 mt-1"></p>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <!-- Travel Date -->
+                  <div>
+                    <label for="travel-date" class="block text-xs font-semibold uppercase tracking-wider text-coast-950 mb-1.5">
+                      Travel Date <span class="text-terracotta-600">*</span>
+                    </label>
+                    <input
+                      type="date"
+                      id="travel-date"
+                      name="travelDate"
+                      class="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-coast-950 focus:outline-none focus:bg-white focus:border-coast-600 focus:ring-2 focus:ring-coast-500/20 transition-all"
+                    />
+                    <p id="error-travel-date" class="hidden text-xs text-terracotta-700 mt-1"></p>
+                  </div>
+
+                  <!-- Number of Travelers -->
+                  <div>
+                    <label for="travelers-count" class="block text-xs font-semibold uppercase tracking-wider text-coast-950 mb-1.5">
+                      Number of Travelers <span class="text-terracotta-600">*</span>
+                    </label>
+                    <input
+                      type="number"
+                      id="travelers-count"
+                      name="travelers"
+                      min="1"
+                      max="20"
+                      value="2"
+                      class="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-coast-950 focus:outline-none focus:bg-white focus:border-coast-600 focus:ring-2 focus:ring-coast-500/20 transition-all"
+                    />
+                    <p id="error-travelers-count" class="hidden text-xs text-terracotta-700 mt-1"></p>
+                  </div>
+                </div>
+
+                <!-- Optional Package / Special Notes -->
+                <div>
+                  <label for="trip-notes" class="block text-xs font-semibold uppercase tracking-wider text-coast-950 mb-1.5">
+                    Package Preference or Special Requests (Optional)
+                  </label>
+                  <textarea
+                    id="trip-notes"
+                    name="notes"
+                    rows="3"
+                    placeholder="Share dietary preferences, celebration occasions, private boat requests, or pace preferences..."
+                    class="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-coast-950 placeholder:text-coast-950/40 focus:outline-none focus:bg-white focus:border-coast-600 focus:ring-2 focus:ring-coast-500/20 transition-all"
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full py-4 px-6 rounded-xl bg-terracotta-500 hover:bg-terracotta-600 active:scale-[0.99] text-white font-semibold text-sm sm:text-base shadow-card transition-all flex items-center justify-center gap-2"
+                >
+                  <span>Confirm Trip Request</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-coast-950 text-sand-100/80 pt-14 pb-10 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-white/10">
+        <div>
+          <span class="font-serif text-2xl font-semibold text-white">Amalfi &amp; Emerald</span>
+          <p class="mt-3 text-xs sm:text-sm text-sand-100/70 leading-relaxed">
+            Curated coastal escapes, scenic mountain paths, and authentic Mediterranean hospitality across Amalfi &amp; The Emerald Coast.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-widest text-coast-300 mb-3.5">Explore</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#about" class="hover:text-white transition-colors">About Destination</a></li>
+            <li><a href="#places" class="hover:text-white transition-colors">Popular Places</a></li>
+            <li><a href="#packages" class="hover:text-white transition-colors">Travel Packages</a></li>
+            <li><a href="#activities" class="hover:text-white transition-colors">Activities</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-widest text-coast-300 mb-3.5">Plan &amp; Inspire</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#gallery" class="hover:text-white transition-colors">Photo Gallery</a></li>
+            <li><a href="#booking" class="hover:text-white transition-colors">Book Your Trip</a></li>
+            <li><a href="#packages" class="hover:text-white transition-colors">Seasonal Guides</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-widest text-coast-300 mb-3.5">Coastal Concierge</h4>
+          <p class="text-sm">Via Marina Grande 42, Coastal District</p>
+          <p class="text-sm text-coast-200 mt-1">concierge@amalfiemerald.example</p>
+          <p class="text-xs text-sand-100/60 mt-2">Daily Hours: 08:00 – 21:00 Local Time</p>
+        </div>
+      </div>
+
+      <div class="pt-7 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-sand-100/60">
+        <p>&copy; <span id="copyright-year">2026</span> Amalfi &amp; The Emerald Coast Tourism. All rights reserved.</p>
+        <p>Crafted for seamless exploration across desktop, tablet &amp; mobile.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== INTERACTIVE PLACE / PACKAGE DETAIL MODAL ==================== -->
+  <div
+    id="detail-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-coast-950/75 backdrop-blur-sm overflow-y-auto"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+  >
+    <div id="detail-modal-panel" class="relative w-full max-w-2xl rounded-3xl bg-white shadow-elevated overflow-hidden my-8 transform transition-all">
+      <button
+        id="close-detail-modal"
+        type="button"
+        aria-label="Close modal"
+        class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-coast-950/65 hover:bg-coast-950 text-white flex items-center justify-center backdrop-blur-md transition-colors"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="h-60 sm:h-72 w-full overflow-hidden bg-coast-900">
+        <img id="modal-image" src="" alt="" class="w-full h-full object-cover" />
+      </div>
+
+      <div id="modal-body" class="p-6 sm:p-8">
+        <!-- Dynamic content injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== GALLERY LIGHTBOX MODAL ==================== -->
+  <div
+    id="lightbox-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-coast-950/90 backdrop-blur-md"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Photo lightbox preview"
+  >
+    <button
+      id="close-lightbox"
+      type="button"
+      aria-label="Close photo preview"
+      class="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <button
+      id="prev-lightbox"
+      type="button"
+      aria-label="Previous photo"
+      class="hidden sm:flex absolute left-5 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white items-center justify-center transition-colors"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <div class="max-w-4xl w-full flex flex-col items-center">
+      <img
+        id="lightbox-img"
+        src=""
+        alt=""
+        class="max-h-[75vh] w-auto max-w-full rounded-2xl shadow-elevated object-contain"
+      />
+      <div class="mt-4 text-center text-white">
+        <span id="lightbox-category" class="inline-block text-xs uppercase tracking-widest text-coast-300 font-semibold"></span>
+        <p id="lightbox-caption" class="text-sm sm:text-base text-sand-100 mt-1"></p>
+      </div>
+      <div class="flex sm:hidden items-center gap-4 mt-4">
+        <button id="prev-lightbox-mobile" type="button" class="px-4 py-2 rounded-full bg-white/15 text-white text-xs font-medium">Prev</button>
+        <button id="next-lightbox-mobile" type="button" class="px-4 py-2 rounded-full bg-white/15 text-white text-xs font-medium">Next</button>
+      </div>
+    </div>
+
+    <button
+      id="next-lightbox"
+      type="button"
+      aria-label="Next photo"
+      class="hidden sm:flex absolute right-5 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white items-center justify-center transition-colors"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- ==================== APPLICATION DATA & INTERACTIVITY SCRIPT ==================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Set dynamic copyright year safely
+      const yearEl = document.getElementById('copyright-year');
+      if (yearEl) {
+        yearEl.textContent = String(new Date().getFullYear());
+      }
+
+      // -------------------- DATA: POPULAR PLACES TO VISIT --------------------
+      const PLACES_DATA = [
+        {
+          id: 'positano',
+          name: 'Positano Cliffside Sanctuary',
+          location: 'Western Amalfi Cliff',
+          bestTime: 'May – June & Sept – Oct',
+          shortDesc: 'Cascading pastel villas, bougainvillea-draped steps, and pebble coves framed by dramatic sheer cliffs.',
+          image: 'https://images.unsplash.com/photo-1534008897995-27a23e859048?auto=format&fit=crop&w=1200&q=80',
+          fullDesc: 'Rising vertically from the turquoise sea, Positano enchants visitors with narrow pedestrian lanes, artisan linen boutiques, and sunset vistas across the bay. Early mornings bring quiet harborside cafés before the midday coastal breeze picks up.',
+          highlights: [
+            'Sunrise stroll down to Spiaggia Grande before day-trippers arrive',
+            'Bespoke sandal makers and family-run ceramic ateliers',
+            'Cliffside terraces overlooking golden hour reflections on the water'
+          ],
+          tip: 'Wear comfortable walking shoes with good grip for stone steps and bring a light linen layer for breezy evening boat rides.'
+        },
+        {
+          id: 'emerald-grotto',
+          name: 'Emerald Grotto & Cala Verde',
+          location: 'Emerald Coast Cove',
+          bestTime: 'Late April – October',
+          shortDesc: 'Luminous jade waters inside a sea-carved cavern paired with sheltered emerald swimming coves.',
+          image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
+          fullDesc: 'Sunlight filtering through underwater openings illuminates the cavern walls in vivid emerald and aquamarine hues. Outside the grotto, Cala Verde offers calm, glassy water ideal for snorkeling and wooden boat anchoring.',
+          highlights: [
+            'Wooden rowboat entry inside the sunlit emerald cavern',
+            'Crystal-clear snorkeling around submerged limestone rock formations',
+            'Peaceful morning anchorages away from bustling main piers'
+          ],
+          tip: 'Visit between 10:30 AM and 1:30 PM when overhead sunlight creates the brightest jade glow inside the water.'
+        },
+        {
+          id: 'ravello-gardens',
+          name: 'Ravello Terrace Gardens',
+          location: 'Highland Belvedere (365m)',
+          bestTime: 'April – October',
+          shortDesc: 'Elevated clifftop gardens, ancient stone balustrades, and sweeping views over twin coastal bays.',
+          image: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=1200&q=80',
+          fullDesc: 'Perched high above the shoreline, Ravello is a haven of quiet elegance. Tree-lined belvederes, fragrant rose and citrus walkways, and historic villas invite lingering afternoons with panoramic sea horizons.',
+          highlights: [
+            'Infinity-style cliffside viewpoints looking out over the Gulf',
+            'Lush botanical paths shaded by ancient cypress and olive trees',
+            'Intimate courtyard dining with fresh mountain herbs and coastal seafood'
+          ],
+          tip: 'Pair a late-afternoon garden walk with aperitivo overlooking the valley as twilight settles over the coastline.'
+        },
+        {
+          id: 'path-of-the-gods',
+          name: 'Path of the Gods Ridge',
+          location: 'Lattari Mountain Crest',
+          bestTime: 'March – June & Sept – Nov',
+          shortDesc: 'Iconic high-altitude coastal trail winding along sheer cliffs with uninterrupted sea-to-sky panoramas.',
+          image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80',
+          fullDesc: 'Suspended high above the waves, this legendary ridge trail connects mountain hamlets with coastal descents. Wild herbs scent the air as rocky headlands stretch out toward distant islands on the horizon.',
+          highlights: [
+            'Unmatched panoramic views of cliffs, coves, and open sea',
+            'Traditional shepherd stone huts and terraced mountain slopes',
+            'Option to descend directly via stone steps to a seaside lunch'
+          ],
+          tip: 'Start early in the morning with at least 1.5 liters of water, sun protection, and trail footwear.'
+        },
+        {
+          id: 'atrani-harbor',
+          name: 'Atrani Harbor & Lemon Groves',
+          location: 'Historic Seaside Quarter',
+          bestTime: 'Year-Round (Peak May – Sept)',
+          shortDesc: 'Intimate vaulted archways, lively local piazzas, and fragrant hillside lemon terraces.',
+          image: 'https://images.unsplash.com/photo-1499678329028-101435549a4e?auto=format&fit=crop&w=1200&q=80',
+          fullDesc: 'Tucked beside a dramatic coastal promontory, Atrani preserves authentic everyday coastal life. Arched passageways open onto a charming square where locals gather over espresso and fresh citrus treats.',
+          highlights: [
+            'Walk through fragrant terraced lemon groves shaded by chestnut poles',
+            'Authentic evening piazza atmosphere with local musicians and families',
+            'Easy coastal stroll connecting neighboring harbor promenades'
+          ],
+          tip: 'Sample fresh lemon granita or homemade citrus pastries at a local café right beside the harbor.'
+        },
+        {
+          id: 'li-galli-reserve',
+          name: 'Li Galli Marine Reserve',
+          location: 'Offshore Archipelago',
+          bestTime: 'May – September',
+          shortDesc: 'Protected turquoise waters and rugged islets famed for marine biodiversity and quiet sailing.',
+          image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+          fullDesc: 'Just offshore from the main cliffs, this cluster of small islands and protected marine waters offers tranquil sailing, rich underwater life, and dramatic views of the coastline from the sea.',
+          highlights: [
+            'Half-day or full-day sailing charters with swim stops in clear coves',
+            'Abundant coastal fish species in protected waters',
+            'Spectacular silhouette of the mainland cliffs at sunset'
+          ],
+          tip: 'Book a morning or late-afternoon boat excursion for calmer sea swells and golden light.'
+        }
+      ];
+
+      // -------------------- DATA: TRAVEL PACKAGES --------------------
+      const PACKAGES_DATA = [
+        {
+          id: 'weekend-getaway',
+          title: 'Weekend Getaway',
+          tagline: 'A refreshing 3-day coastal escape',
+          duration: '3 Days / 2 Nights',
+          price: '$690',
+          priceUnit: 'per person',
+          badge: 'Quick Escape',
+          image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80',
+          facilities: [
+            '2 nights at a boutique sea-view hotel',
+            'Daily Mediterranean breakfast & welcome aperitivo',
+            'Guided coastal boat cruise & cove swim stop',
+            'Round-trip harbor transfer assistance'
+          ],
+          itinerary: [
+            'Day 1: Arrival, coastal harbor orientation walk & sunset terrace dinner.',
+            'Day 2: Morning boat excursion along Emerald Coves & free afternoon in historic lanes.',
+            'Day 3: Leisurely breakfast, artisan market browsing & relaxed departure.'
+          ]
+        },
+        {
+          id: 'adventure-package',
+          title: 'Adventure Package',
+          tagline: 'Ridge trails, sea caves & active coastal exploration',
+          duration: '5 Days / 4 Nights',
+          price: '$1,240',
+          priceUnit: 'per person',
+          badge: 'Most Active',
+          image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=80',
+          facilities: [
+            '4 nights in an active-friendly cliffside eco-inn',
+            'Guided Path of the Gods hike with trail picnic',
+            'Sea kayaking & emerald grotto exploration',
+            'Certified mountain & marine guides included'
+          ],
+          itinerary: [
+            'Day 1: Trail briefing, coastal warm-up walk & hearty regional welcome meal.',
+            'Day 2: Guided ridge trek along the Path of the Gods with panoramic viewpoints.',
+            'Day 3: Sea kayak paddle into hidden coves and snorkeling session.',
+            'Day 4: Scenic valley ascent or coastal cycling & farewell dinner.'
+          ]
+        },
+        {
+          id: 'family-vacation',
+          title: 'Family Vacation',
+          tagline: 'Easygoing beaches, gelato stops & memorable outings',
+          duration: '6 Days / 5 Nights',
+          price: '$1,580',
+          priceUnit: 'per person',
+          badge: 'Family Favorite',
+          image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80',
+          facilities: [
+            '5 nights in a spacious family suite with sea breeze',
+            'Gentle family boat day with calm swimming bays',
+            'Hands-on lemon grove & coastal cooking workshop',
+            'Flexible daily pacing with zero rushed transfers'
+          ],
+          itinerary: [
+            'Day 1–2: Settle into your family suite, beach time & evening piazza strolls.',
+            'Day 3: Private family boat outing to calm turquoise coves.',
+            'Day 4: Citrus grove visit & fun pasta-making experience for all ages.',
+            'Day 5: Garden terrace visit & relaxed coastal souvenir shopping.'
+          ]
+        },
+        {
+          id: 'luxury-tour',
+          title: 'Luxury Tour',
+          tagline: 'Private yachting, fine dining & panoramic suites',
+          duration: '7 Days / 6 Nights',
+          price: '$2,890',
+          priceUnit: 'per person',
+          badge: 'Signature Luxury',
+          image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
+          facilities: [
+            '6 nights in a luxury cliffside suite with private terrace',
+            'Private charter boat day with skipper & refreshments',
+            'Tasting menus at acclaimed coastal & garden restaurants',
+            'Dedicated concierge & private door-to-door transfers'
+          ],
+          itinerary: [
+            'Day 1–2: VIP arrival, suite check-in & candlelit cliffside tasting dinner.',
+            'Day 3–4: Private yacht charter along hidden coves & exclusive coastal lunch.',
+            'Day 5–6: Private garden & heritage tour, spa/wellness relaxation & sunset cruise.',
+            'Day 7: Leisurely morning on the terrace & private departure transfer.'
+          ]
+        }
+      ];
+
+      // -------------------- DATA: ACTIVITIES & EXPERIENCES --------------------
+      const ACTIVITIES_DATA = [
+        {
+          title: 'Mountain Trekking',
+          desc: 'Traverse sunlit limestone ridges, stone staircases, and pine-scented mountain trails overlooking sweeping coastal horizons.',
+          tag: 'Moderate to Challenging',
+          image: 'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1000&q=80'
+        },
+        {
+          title: 'Beach Activities',
+          desc: 'Swim in clear emerald waters, lounge on sun-warmed coastal coves, and enjoy paddleboarding and snorkeling in sheltered bays.',
+          tag: 'All Skill Levels',
+          image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80'
+        },
+        {
+          title: 'Camping',
+          desc: 'Wake up to crisp highland air or coastal breezes at scenic nature campsites surrounded by olive groves and starlit skies.',
+          tag: 'Nature & Outdoors',
+          image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1000&q=80'
+        },
+        {
+          title: 'Sightseeing',
+          desc: 'Explore historic harbors, cliffside botanical terraces, bell towers, and vibrant coastal piazzas rich in architectural charm.',
+          tag: 'Culture & Views',
+          image: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1000&q=80'
+        },
+        {
+          title: 'Boating',
+          desc: 'Glide past dramatic sea cliffs, natural arches, and tranquil coves aboard wooden boats, sailboats, or private charters.',
+          tag: 'Sea & Sunset',
+          image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=80'
+        },
+        {
+          title: 'Wildlife Exploration',
+          desc: 'Spot coastal seabirds along rocky headlands, observe rich marine life in protected waters, and discover native highland flora.',
+          tag: 'Eco Discovery',
+          image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1000&q=80'
+        }
+      ];
+
+      // -------------------- DATA: PHOTO GALLERY --------------------
+      const GALLERY_CATEGORIES = ['All', 'Landscapes', 'Attractions', 'Culture', 'Food', 'Adventure'];
+
+      const GALLERY_ITEMS = [
+        {
+          category: 'Landscapes',
+          title: 'Golden Hour Over Coastal Cliffs',
+          caption: 'Warm evening light washing over sheer limestone cliffs and calm blue water.',
+          image: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80'
+        },
+        {
+          category: 'Attractions',
+          title: 'Terraced Hillside Village',
+          caption: 'Colorful homes stepped along the steep coastal slope above the harbor.',
+          image: 'https://images.unsplash.com/photo-1534008897995-27a23e859048?auto=format&fit=crop&w=1200&q=80'
+        },
+        {
+          category: 'Food',
+          title: 'Fresh Coastal Seafood & Citrus',
+          caption: 'Sun-ripened lemons and freshly prepared Mediterranean coastal dishes.',
+          image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80'
+        },
+        {
+          category: 'Adventure',
+          title: 'Highland Ridge Trail Views',
+          caption: 'Scenic mountain paths linking elevated ridges with shimmering sea horizons.',
+          image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80'
+        },
+        {
+          category: 'Culture',
+          title: 'Historic Harbor & Old World Charm',
+          caption: 'Timeless coastal architecture and relaxed waterfront promenades.',
+          image: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=1200&q=80'
+        },
+        {
+          category: 'Landscapes',
+          title: 'Emerald Cove & Clear Shallows',
+          caption: 'Translucent turquoise waters nestled inside a sheltered coastal bay.',
+          image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'
+        },
+        {
+          category: 'Adventure',
+          title: 'Open Water Sailing & Boating',
+          caption: 'Cruising past rocky headlands and quiet sea coves under clear skies.',
+          image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80'
+        },
+        {
+          category: 'Food',
+          title: 'Al Fresco Terrace Dining',
+          caption: 'Long leisurely meals overlooking the coast with local wine and seasonal plates.',
+          image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80'
+        },
+        {
+          category: 'Attractions',
+          title: 'Misty Mountain & Valley Horizon',
+          caption: 'Serene morning mist drifting across lush coastal hills and valleys.',
+          image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80'
+        }
+      ];
+
+      // -------------------- RENDER POPULAR PLACES --------------------
+      const placesGrid = document.getElementById('places-grid');
+      if (placesGrid) {
+        placesGrid.innerHTML = PLACES_DATA.map((place) => `
+          <article class="group bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-card border border-sand-200 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 reveal">
+            <div>
+              <div class="relative h-56 overflow-hidden bg-coast-900">
+                <img
+                  src="${place.image}"
+                  alt="${place.name}"
+                  onerror="this.onerror=null;this.src='https://placehold.co/800x500/2e7468/ffffff?text=Coastal+Place';"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full text-xs font-medium bg-coast-950/75 text-coast-100 backdrop-blur-md">
+                  ${place.location}
+                </span>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between gap-2 text-xs text-coast-700 font-medium mb-2">
+                  <span>Best Time: ${place.bestTime}</span>
+                </div>
+                <h3 class="font-serif text-2xl font-semibold text-coast-950">${place.name}</h3>
+                <p class="mt-2.5 text-sm text-coast-950/75 leading-relaxed">${place.shortDesc}</p>
+              </div>
+            </div>
+            <div class="px-6 pb-6 pt-2">
+              <button
+                type="button"
+                data-place-id="${place.id}"
+                class="view-place-btn w-full py-3 px-4 rounded-xl bg-sand-100 hover:bg-coast-700 text-coast-950 hover:text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2 border border-sand-200 hover:border-coast-700"
+              >
+                <span>View More</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </article>
+        `).join('');
+      }
+
+      // -------------------- RENDER TRAVEL PACKAGES --------------------
+      const packagesGrid = document.getElementById('packages-grid');
+      if (packagesGrid) {
+        packagesGrid.innerHTML = PACKAGES_DATA.map((pkg) => `
+          <article class="group bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-card border border-sand-200 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 reveal">
+            <div>
+              <div class="relative h-48 overflow-hidden bg-coast-900">
+                <img
+                  src="${pkg.image}"
+                  alt="${pkg.title}"
+                  onerror="this.onerror=null;this.src='https://placehold.co/800x500/224c46/ffffff?text=Travel+Package';"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full text-xs font-semibold bg-white/95 text-coast-900 shadow-sm">
+                  ${pkg.badge}
+                </span>
+              </div>
+
+              <div class="p-6">
+                <div class="flex items-baseline justify-between gap-2">
+                  <span class="text-xs font-semibold uppercase tracking-wider text-coast-700">${pkg.duration}</span>
+                  <div class="text-right">
+                    <span class="font-serif text-2xl font-bold text-coast-950">${pkg.price}</span>
+                    <span class="block text-[11px] text-coast-950/60">${pkg.priceUnit}</span>
+                  </div>
+                </div>
+
+                <h3 class="font-serif text-2xl font-semibold text-coast-950 mt-1">${pkg.title}</h3>
+                <p class="text-xs text-coast-950/70 mt-1">${pkg.tagline}</p>
+
+                <ul class="mt-4 space-y-2 border-t border-sand-200 pt-4 text-xs text-coast-950/80">
+                  ${pkg.facilities.map((item) => `
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-coast-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>${item}</span>
+                    </li>
+                  `).join('')}
+                </ul>
+              </div>
+            </div>
+
+            <div class="px-6 pb-6 pt-2">
+              <button
+                type="button"
+                data-package-id="${pkg.id}"
+                class="explore-package-btn w-full py-3 px-4 rounded-xl bg-coast-700 hover:bg-coast-800 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2"
+              >
+                <span>Explore Package</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </button>
+            </div>
+          </article>
+        `).join('');
+      }
+
+      // -------------------- RENDER ACTIVITIES --------------------
+      const activitiesGrid = document.getElementById('activities-grid');
+      if (activitiesGrid) {
+        activitiesGrid.innerHTML = ACTIVITIES_DATA.map((act) => `
+          <article class="group relative rounded-3xl overflow-hidden bg-coast-900 border border-white/10 shadow-card reveal">
+            <div class="h-64 overflow-hidden">
+              <img
+                src="${act.image}"
+                alt="${act.title}"
+                onerror="this.onerror=null;this.src='https://placehold.co/800x550/1f403b/ffffff?text=Activity';"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-85 group-hover:opacity-100"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-coast-950 via-coast-950/55 to-transparent"></div>
+            </div>
+            <div class="absolute inset-x-0 bottom-0 p-6">
+              <span class="inline-block px-3 py-1 rounded-full text-[11px] font-medium bg-coast-500/25 border border-coast-300/30 text-coast-200 mb-2.5">
+                ${act.tag}
+              </span>
+              <h3 class="font-serif text-2xl font-semibold text-white">${act.title}</h3>
+              <p class="mt-1.5 text-xs sm:text-sm text-sand-100/80 leading-relaxed">${act.desc}</p>
+            </div>
+          </article>
+        `).join('');
+      }
+
+      // -------------------- RENDER PHOTO GALLERY & FILTERS --------------------
+      const filtersContainer = document.getElementById('gallery-filters');
+      const galleryGrid = document.getElementById('gallery-grid');
+      let activeCategory = 'All';
+      let currentFilteredItems = GALLERY_ITEMS.slice();
+      let currentLightboxIndex = 0;
+
+      function getFilteredGallery() {
+        if (activeCategory === 'All') {
+          return GALLERY_ITEMS.slice();
+        }
+        return GALLERY_ITEMS.filter((item) => item.category === activeCategory);
+      }
+
+      function renderGalleryFilters() {
+        if (!filtersContainer) return;
+        filtersContainer.innerHTML = GALLERY_CATEGORIES.map((cat) => {
+          const isActive = cat === activeCategory;
+          return `
+            <button
+              type="button"
+              role="tab"
+              aria-selected="${isActive}"
+              data-category="${cat}"
+              class="gallery-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
+                isActive
+                  ? 'bg-coast-700 text-white shadow-sm'
+                  : 'bg-white text-coast-950/80 hover:bg-sand-200/70 border border-sand-200'
+              }"
+            >
+              ${cat}
+            </button>
+          `;
+        }).join('');
+      }
+
+      function renderGalleryGrid() {
+        if (!galleryGrid) return;
+        currentFilteredItems = getFilteredGallery();
+        galleryGrid.innerHTML = currentFilteredItems.map((item, idx) => `
+          <figure
+            data-lightbox-index="${idx}"
+            class="gallery-item group relative rounded-2xl overflow-hidden aspect-[4/3] bg-coast-900 shadow-soft hover:shadow-card cursor-pointer"
+          >
+            <img
+              src="${item.image}"
+              alt="${item.title}"
+              onerror="this.onerror=null;this.src='https://placehold.co/800x600/2e7468/ffffff?text=Gallery+Photo';"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-coast-950/85 via-coast-950/20 to-transparent opacity-85 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+              <span class="text-[11px] uppercase tracking-widest text-coast-300 font-semibold">${item.category}</span>
+              <figcaption class="font-serif text-xl text-white font-semibold leading-snug mt-0.5">${item.title}</figcaption>
+              <p class="text-xs text-sand-100/80 mt-1 line-clamp-2">${item.caption}</p>
+            </div>
+          </figure>
+        `).join('');
+      }
+
+      renderGalleryFilters();
+      renderGalleryGrid();
+
+      if (filtersContainer) {
+        filtersContainer.addEventListener('click', (e) => {
+          const btn = e.target.closest('.gallery-filter-btn');
+          if (!btn) return;
+          activeCategory = btn.getAttribute('data-category') || 'All';
+          renderGalleryFilters();
+          renderGalleryGrid();
+        });
+      }
+
+      // -------------------- DETAIL MODAL (PLACES & PACKAGES) --------------------
+      const detailModal = document.getElementById('detail-modal');
+      const modalImage = document.getElementById('modal-image');
+      const modalBody = document.getElementById('modal-body');
+      const closeDetailModalBtn = document.getElementById('close-detail-modal');
+      const destinationSelect = document.getElementById('destination-select');
+      const selectedPackageBadge = document.getElementById('selected-package-badge');
+      const tripNotesInput = document.getElementById('trip-notes');
+
+      function openModalWithContent(imgSrc, imgAlt, htmlContent) {
+        if (!detailModal || !modalImage || !modalBody) return;
+        modalImage.src = imgSrc;
+        modalImage.alt = imgAlt;
+        modalBody.innerHTML = htmlContent;
+        detailModal.classList.remove('hidden');
+        detailModal.classList.add('flex');
+        document.body.classList.add('overflow-hidden');
+      }
+
+      function closeDetailModal() {
+        if (!detailModal) return;
+        detailModal.classList.add('hidden');
+        detailModal.classList.remove('flex');
+        document.body.classList.remove('overflow-hidden');
+      }
+
+      function scrollToBookingWithSelection(destinationValue, packageLabel) {
+        closeDetailModal();
+        if (destinationSelect && destinationValue) {
+          // Ensure option exists or set closest match
+          const hasOption = Array.from(destinationSelect.options).some((opt) => opt.value === destinationValue);
+          if (!hasOption) {
+            const customOpt = document.createElement('option');
+            customOpt.value = destinationValue;
+            customOpt.textContent = destinationValue;
+            destinationSelect.appendChild(customOpt);
+          }
+          destinationSelect.value = destinationValue;
+          destinationSelect.dispatchEvent(new Event('change'));
+        }
+        if (selectedPackageBadge) {
+          if (packageLabel) {
+            selectedPackageBadge.textContent = packageLabel;
+            selectedPackageBadge.classList.remove('hidden');
+          } else {
+            selectedPackageBadge.classList.add('hidden');
+          }
+        }
+        if (tripNotesInput && packageLabel && !tripNotesInput.value.trim()) {
+          tripNotesInput.value = `Interested in: ${packageLabel}`;
+        }
+        const bookingSection = document.getElementById('booking');
+        if (bookingSection) {
+          bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      document.addEventListener('click', (e) => {
+        const placeBtn = e.target.closest('.view-place-btn');
+        if (placeBtn) {
+          const id = placeBtn.getAttribute('data-place-id');
+          const place = PLACES_DATA.find((p) => p.id === id);
+          if (place) {
+            openModalWithContent(
+              place.image,
+              place.name,
+              `
+                <div class="flex flex-wrap items-center gap-2 text-xs font-semibold text-coast-700 mb-2">
+                  <span class="px-3 py-1 rounded-full bg-coast-100">${place.location}</span>
+                  <span class="px-3 py-1 rounded-full bg-sand-100 text-coast-950">Best Time: ${place.bestTime}</span>
+                </div>
+                <h2 id="modal-title" class="font-serif text-3xl font-semibold text-coast-950">${place.name}</h2>
+                <p class="mt-3 text-sm sm:text-base text-coast-950/80 leading-relaxed">${place.fullDesc}</p>
+
+                <div class="mt-5">
+                  <h3 class="text-xs font-semibold uppercase tracking-wider text-coast-950 mb-2">Top Highlights</h3>
+                  <ul class="space-y-2 text-sm text-coast-950/80">
+                    ${place.highlights.map((h) => `
+                      <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-coast-600 mt-2 shrink-0"></span>
+                        <span>${h}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+
+                <div class="mt-5 p-4 rounded-2xl bg-sand-50 border border-sand-200 text-xs sm:text-sm text-coast-950/80">
+                  <strong class="text-coast-950">Local Tip:</strong> ${place.tip}
+                </div>
+
+                <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                  <button
+                    type="button"
+                    id="modal-book-place-btn"
+                    data-place-name="${place.name}"
+                    class="flex-1 py-3.5 px-5 rounded-xl bg-terracotta-500 hover:bg-terracotta-600 text-white font-semibold text-sm transition-colors text-center"
+                  >
+                    Book Trip Here
+                  </button>
+                  <button
+                    type="button"
+                    id="modal-close-secondary"
+                    class="py-3.5 px-5 rounded-xl bg-sand-100 hover:bg-sand-200 text-coast-950 font-semibold text-sm transition-colors"
+                  >
+                    Keep Exploring
+                  </button>
+                </div>
+              `
+            );
+          }
+          return;
+        }
+
+        const pkgBtn = e.target.closest('.explore-package-btn');
+        if (pkgBtn) {
+          const id = pkgBtn.getAttribute('data-package-id');
+          const pkg = PACKAGES_DATA.find((p) => p.id === id);
+          if (pkg) {
+            const bookingOptionValue = `${pkg.title} (${pkg.duration.split('/')[0].trim()})`;
+            openModalWithContent(
+              pkg.image,
+              pkg.title,
+              `
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="px-3 py-1 rounded-full text-xs font-semibold bg-coast-100 text-coast-800">${pkg.duration}</span>
+                  <div class="text-right">
+                    <span class="font-serif text-3xl font-bold text-coast-950">${pkg.price}</span>
+                    <span class="text-xs text-coast-950/60 ml-1">${pkg.priceUnit}</span>
+                  </div>
+                </div>
+                <h2 id="modal-title" class="font-serif text-3xl font-semibold text-coast-950">${pkg.title}</h2>
+                <p class="mt-1 text-sm text-coast-950/75">${pkg.tagline}</p>
+
+                <div class="mt-5">
+                  <h3 class="text-xs font-semibold uppercase tracking-wider text-coast-950 mb-2">Included Facilities &amp; Perks</h3>
+                  <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-coast-950/80">
+                    ${pkg.facilities.map((f) => `
+                      <li class="flex items-start gap-2 bg-sand-50 p-2.5 rounded-xl border border-sand-200/70">
+                        <svg class="w-4 h-4 text-coast-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>${f}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+
+                <div class="mt-5">
+                  <h3 class="text-xs font-semibold uppercase tracking-wider text-coast-950 mb-2">Sample Itinerary Highlights</h3>
+                  <div class="space-y-2 text-xs sm:text-sm text-coast-950/80 bg-sand-50 p-4 rounded-2xl border border-sand-200">
+                    ${pkg.itinerary.map((step) => `<p>${step}</p>`).join('')}
+                  </div>
+                </div>
+
+                <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                  <button
+                    type="button"
+                    id="modal-select-package-btn"
+                    data-
